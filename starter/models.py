@@ -2,12 +2,13 @@ import os
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 import json
+from app import app 
 
 
 database_path = "postgres://vxeixurhhuzzmc:bf31bf678d244b3a7d0302bbbf7ff587172bcf34f8f1b85e8413a66d9cd9256e@ec2-54-205-232-84.compute-1.amazonaws.com:5432/dcnrfesiknuo7q"
 
 db = SQLAlchemy()
-db.init_app(APP)
+db.init_app(app)
 
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
