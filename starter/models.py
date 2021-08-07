@@ -2,18 +2,18 @@ import os
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 import json
-from app import APP
+from app import app
 
 database_path = "postgres://vxeixurhhuzzmc:bf31bf678d244b3a7d0302bbbf7ff587172bcf34f8f1b85e8413a66d9cd9256e@ec2-54-205-232-84.compute-1.amazonaws.com:5432/dcnrfesiknuo7q"
 
 db = SQLAlchemy()
 db.init_app(APP)
 
-def setup_db(APP, database_path=database_path):
-    APP.config["SQLALCHEMY_DATABASE_URI"] = database_path
-    APP.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+def setup_db(app, database_path=database_path):
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     
-    db.app = APP
+    db.app = app
     
 
 class Actor(db.Model):
